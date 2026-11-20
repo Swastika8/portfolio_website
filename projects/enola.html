@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An interactive introduction to Swastika Sinha’s Python pipeline for migrating spreadsheet records to PostgreSQL.">
+  <meta name="theme-color" content="#e8eddf">
+  <title>Enola ETL — Swastika Sinha</title>
+  <link rel="preload" href="../assets/desk/ledger.webp" as="image">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../notebook.css">
+  <script src="enola-sample.js" defer></script>
+  <script src="/register-offline.js" defer fetchpriority="low"></script>
+</head>
+<body class="ledger-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="Swastika Sinha home">SS<span>.</span></a>
+      <nav class="site-nav notebook-nav" aria-label="Main navigation">
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#milestones">Milestones</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+      </nav>
+      <a class="button button-outline" href="../assets/swastika-sinha-resume.pdf" download>Résumé</a>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="desk-scene ledger-scene" aria-labelledby="enola-title">
+      <div class="container scene-grid ledger-desk">
+        <header class="case-opening ledger-opening">
+          <a class="text-link back-link" href="../index.html#work">All selected work</a>
+          <p class="label">Data engineering</p>
+          <h1 id="enola-title">Enola ETL</h1>
+          <p>A Python pipeline that takes inconsistent spreadsheet rows and prepares them for a relational database.</p>
+          <a class="button button-primary" href="https://github.com/Swastika8/Enola-ETL">View source on GitHub</a>
+        </header>
+
+        <section class="paper demo-sheet" aria-labelledby="demo-title">
+          <span class="binder" aria-hidden="true"></span>
+          <h2 id="demo-title">Try the pipeline</h2>
+          <p>These fictional rows show how capitalization, spacing, and date formats can hide a duplicate.</p>
+          <table id="sample-table">
+            <caption>Sample worksheet input</caption>
+            <thead>
+              <tr><th scope="col">Record ID</th><th scope="col">Team</th><th scope="col">Date</th></tr>
+            </thead>
+            <tbody>
+              <tr><td> CV-017 </td><td>ops</td><td>2026/06/01</td></tr>
+              <tr data-duplicate><td>cv-017</td><td>OPS</td><td>2026-06-01</td></tr>
+              <tr><td>CV-024</td><td>support </td><td>2026/06/02</td></tr>
+            </tbody>
+          </table>
+          <button id="sample-action" class="button button-primary" type="button" aria-controls="sample-table" hidden>Normalize rows</button>
+          <p id="sample-status" role="status">3 rows in the source worksheet.</p>
+        </section>
+      </div>
+    </section>
+
+    <div class="container case-body">
+      <article class="paper case-paper">
+        <h2>Cleaning records before loading</h2>
+        <p>I built the pipeline to extract Excel data, normalize types and formats, validate records, and handle duplicates before loading into PostgreSQL.</p>
+        <p>The migration processed 1,043 source records and involved resolving unique-key and foreign-key conflicts across related tables.</p>
+      </article>
+      <aside class="sticky case-note">
+        <h2 class="sticky-title">Project notes</h2>
+        <dl class="case-facts">
+          <div><dt>My role</dt><dd>Pipeline development and database migration</dd></div>
+          <div><dt>Technologies</dt><dd>Python, Flask, PostgreSQL, SQL</dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <nav class="container case-footer-nav" aria-label="Project navigation">
+      <a class="text-link" href="../index.html#work">All selected work</a>
+      <a class="text-link" href="civic-reporting.html">Next project · Public Issue Reporting</a>
+    </nav>
+  </main>
+
+  <footer class="container site-footer">
+    <p>© 2026 Swastika Sinha</p>
+    <a class="text-link" href="../index.html#contact">Contact</a>
+  </footer>
+</body>
+</html>

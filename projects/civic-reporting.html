@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Swastika Sinha’s work as team lead on a mobile civic issue reporting app with a Flask API and relational database.">
+  <meta name="theme-color" content="#f2eadc">
+  <title>Smart Public Issue Reporting — Swastika Sinha</title>
+  <link rel="preload" href="../assets/desk/field.webp" as="image">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../notebook.css">
+  <script src="/register-offline.js" defer fetchpriority="low"></script>
+</head>
+<body class="field-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="Swastika Sinha home">SS<span>.</span></a>
+      <nav class="site-nav notebook-nav" aria-label="Main navigation">
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#milestones">Milestones</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+      </nav>
+      <a class="button button-outline" href="../assets/swastika-sinha-resume.pdf" download>Résumé</a>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="desk-scene field-scene" aria-labelledby="civic-title">
+      <div class="container field-desk">
+        <header class="paper field-opening">
+          <span class="washi" aria-hidden="true"></span>
+          <a class="text-link back-link" href="../index.html#work">All selected work</a>
+          <p class="label">La Trobe Grand Challenge</p>
+          <h1 id="civic-title">Smart Public Issue Reporting</h1>
+          <p>A mobile app for reporting civic issues with a location, category, and trackable status.</p>
+        </header>
+
+        <aside class="sticky report-note" aria-labelledby="report-title">
+          <span class="pushpin" aria-hidden="true"></span>
+          <h2 class="sticky-title" id="report-title">Sample report</h2>
+          <p>Blocked footpath</p>
+          <p class="report-status">Submitted</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="container report-file" aria-labelledby="report-flow-title">
+      <h2 id="report-flow-title">How a report moves through the app</h2>
+      <ol class="report-flow">
+        <li class="paper"><strong>Describe the issue</strong><p>The reporter enters what happened, chooses a category, and attaches a location.</p></li>
+        <li class="paper"><strong>Submit the report</strong><p>The Flutter client sends the report to the Flask API, which stores it for later lookup.</p></li>
+        <li class="paper"><strong>Check its status</strong><p>The client reads the stored report and displays its current status.</p></li>
+      </ol>
+    </section>
+
+    <div class="container case-body civic-body">
+      <article class="paper case-paper">
+        <h2>My contribution</h2>
+        <p>I led the student team and designed the Flask REST APIs, relational database schemas, and API contracts. I also coordinated the Flutter-to-backend integration so the mobile client and database agreed on how a report was created and retrieved.</p>
+      </article>
+      <aside class="sticky case-note">
+        <h2 class="sticky-title">Project notes</h2>
+        <dl class="case-facts">
+          <div><dt>My role</dt><dd>Team lead and backend development</dd></div>
+          <div><dt>Project period</dt><dd>January to May 2026</dd></div>
+          <div><dt>Technologies</dt><dd>Flutter, Flask, PostgreSQL, SQLite</dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <nav class="container case-footer-nav" aria-label="Project navigation">
+      <a class="text-link" href="../index.html#work">All selected work</a>
+      <a class="text-link" href="orion.html">Next project · ORION</a>
+    </nav>
+  </main>
+
+  <footer class="container site-footer">
+    <p>© 2026 Swastika Sinha</p>
+    <a class="text-link" href="../index.html#contact">Contact</a>
+  </footer>
+</body>
+</html>

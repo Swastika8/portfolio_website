@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Swastika Sinha’s software engineering portfolio, featuring backend APIs, data pipelines, full-stack projects, and writing.">
+  <meta name="theme-color" content="#f4eef8">
+  <title>Swastika Sinha — Software Engineer</title>
+  <link rel="preload" href="assets/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="notebook.css">
+  <script src="notebook.js" defer></script>
+  <script src="/register-offline.js" defer fetchpriority="low"></script>
+  <script src="projects/enola-sample.js" defer></script>
+</head>
+<body class="notebook-home">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Swastika Sinha home">SS<span>.</span></a>
+      <nav class="site-nav notebook-nav" aria-label="Main navigation">
+        <a href="#work">Work</a>
+        <a href="#milestones">Milestones</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+      </nav>
+      <a class="button button-outline" href="assets/swastika-sinha-resume.pdf" download>Résumé</a>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="container notebook-stage" aria-labelledby="name">
+      <div class="notebook-shell" id="notebook-shell">
+        <div class="notebook-toolbar">
+          <span class="notebook-mark"><span aria-hidden="true">✦</span> Swastika’s notebook</span>
+          <div class="notebook-controls">
+            <button type="button" class="desk-button" id="pad-toggle" aria-expanded="false" aria-controls="desk-pad" hidden><span aria-hidden="true">✎</span> Notepad</button>
+            <button type="button" class="desk-button" id="cat-toggle" aria-pressed="false" hidden>Cursor cat</button>
+            <button type="button" class="desk-button" id="cat-play" aria-label="Play with the cat" title="Pounce, stretch, paw wash, and nap" hidden>Play</button>
+            <button type="button" class="desk-button" id="cat-pet" aria-label="Pet the cat" hidden>Pet</button>
+            <span class="visually-hidden" id="cat-status" role="status"></span>
+          </div>
+        </div>
+        <div class="notebook-spread" id="notebook-spread">
+          <div class="notebook-intro">
+            <div class="intro-sheet">
+              <span class="paperclip" aria-hidden="true"></span>
+              <p class="notebook-label">Backend &amp; full-stack engineering</p>
+              <h1 id="name">Swastika<br><em>Sinha<span>.</span></em></h1>
+              <p>I build APIs, data pipelines, and the interfaces that put them to work.</p>
+              <div class="link-row">
+                <a class="button ink-button" href="#work">See my work</a>
+                <a class="text-link" href="#contact">Get in touch</a>
+              </div>
+              <figure class="notebook-quote">
+                <blockquote>“If there’s a problem, engineer a better answer.”</blockquote>
+                <figcaption>Inspired by Tony Stark</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="notebook-right">
+            <div class="desk-art" id="desk-art">
+              <a class="moon-window" href="projects/orion.html">
+                <img src="assets/notebook/orbit-window.webp" alt="" width="613" height="920" fetchpriority="high">
+                <span class="window-label"><strong>ORION</strong><span>Read case study</span></span>
+              </a>
+              <span class="orbit-sparkle sparkle-one" aria-hidden="true">✧</span>
+              <span class="orbit-sparkle sparkle-two" aria-hidden="true">✦</span>
+              <img class="charm-bracelet" src="assets/notebook/bracelet-cutout.webp" alt="" width="295" height="590">
+              <button class="coffee-button" type="button" id="coffee-toggle" aria-label="Open the notepad" title="Open the notepad" hidden>
+                <img src="assets/notebook/coffee-cutout.webp" alt="" width="450" height="450">
+              </button>
+              <img class="coffee-still" src="assets/notebook/coffee-cutout.webp" alt="" width="450" height="450">
+              <button class="cat-seat" id="cat-seat" type="button" aria-label="Pet the seated cat" title="Pet the cat" disabled>
+                <img class="cat-seat-idle" src="assets/notebook/desk-cat.webp" alt="" width="220" height="220">
+                <span class="cat-sprite" aria-hidden="true"></span>
+              </button>
+              <a class="milestone-sticky" href="#milestones">
+                <span class="paperclip" aria-hidden="true"></span>
+                <span>Milestones</span>
+                <small>SIH finalist · 2026</small>
+              </a>
+            </div>
+            <section class="desk-pad" id="desk-pad" aria-labelledby="desk-pad-title" hidden>
+              <div class="desk-pad-heading">
+                <h2 id="desk-pad-title">Desk notes</h2>
+                <button class="desk-button" id="close-pad" type="button">Close</button>
+              </div>
+              <div class="pad-actions" role="group" aria-label="Notepad tools">
+                <button class="desk-button" type="button" id="type-mode" aria-pressed="true">Type</button>
+                <button class="desk-button" type="button" id="draw-mode" aria-pressed="false">Draw</button>
+                <button class="desk-button" type="button" id="undo-stroke" disabled hidden>Undo</button>
+                <button class="desk-button" type="button" id="clear-sketch" disabled hidden>Clear sketch</button>
+              </div>
+              <label class="visually-hidden" for="desk-note">Your private desk note</label>
+              <textarea id="desk-note" maxlength="8000" placeholder="Leave yourself a note…"></textarea>
+              <canvas id="desk-sketch" aria-label="Graph paper for drawing with a pointer or touch" hidden></canvas>
+              <p class="pad-help" id="pad-help" role="status">Notes stay in this browser.</p>
+            </section>
+          </div>
+          <div class="cursor-cat" id="cursor-cat" data-action="idle" aria-hidden="true" hidden>
+            <img class="cat-idle" src="assets/notebook/desk-cat.webp" alt="" width="220" height="220">
+            <span class="cat-sprite"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container notebook-index">
+      <section id="work" aria-labelledby="work-title">
+        <div class="index-heading">
+          <h2 id="work-title">Selected work</h2>
+          <a class="text-link" href="https://github.com/Swastika8?tab=repositories">GitHub</a>
+        </div>
+        <article class="featured-work" aria-labelledby="featured-title">
+          <figure class="featured-print">
+            <img src="assets/orion-scene.webp" alt="Earth and satellite markers in ORION’s 3D viewer" width="1600" height="900" loading="lazy" decoding="async" fetchpriority="low">
+            <figcaption>ORION’s Three.js viewer</figcaption>
+          </figure>
+          <div class="featured-copy">
+            <h3 id="featured-title">ORION</h3>
+            <p class="work-role">Satellite tracking in 3D</p>
+            <p>I built FastAPI endpoints and used GPU instancing in the Three.js viewer to render many orbital objects together.</p>
+            <div class="link-row">
+              <a class="text-link" href="projects/orion.html">Read case study</a>
+              <a class="text-link" href="https://github.com/Swastika8/ORION" aria-label="View ORION source on GitHub">Source code</a>
+            </div>
+          </div>
+        </article>
+        <ul class="work-list">
+          <li><a href="projects/enola.html"><span><strong>Enola ETL</strong><small>Built a pipeline that processed 1,043 spreadsheet records for migration.</small></span><span class="work-tools">Python · PostgreSQL</span></a></li>
+          <li><a href="projects/civic-reporting.html"><span><strong>Public Issue Reporting</strong><small>Led the team and designed the API and database behind a civic reporting app.</small></span><span class="work-tools">Flutter · Flask</span></a></li>
+          <li><a href="projects/import-check.html"><span><strong>Import Check</strong><small>Prototype that detects missing fields and type changes before an import.</small></span><span class="work-tools">Node.js · JSON API</span></a></li>
+        </ul>
+      </section>
+      <aside class="work-margin" aria-label="Work samples and milestones">
+        <section class="work-sample" aria-labelledby="work-sample-title">
+          <h3 id="work-sample-title">Try Enola ETL</h3>
+          <p>Clean and deduplicate a tiny sample spreadsheet.</p>
+          <table id="sample-table">
+            <caption>Sample worksheet input</caption>
+            <thead>
+              <tr><th scope="col">Record ID</th><th scope="col">Team</th><th scope="col">Date</th></tr>
+            </thead>
+            <tbody>
+              <tr><td> CV-017 </td><td>ops</td><td>2026/06/01</td></tr>
+              <tr data-duplicate><td>cv-017</td><td>OPS</td><td>2026-06-01</td></tr>
+              <tr><td>CV-024</td><td>support </td><td>2026/06/02</td></tr>
+            </tbody>
+          </table>
+          <button class="desk-button" type="button" id="sample-action" aria-controls="sample-table" hidden>Normalize rows</button>
+          <p class="sample-feedback" id="sample-status" role="status">3 rows in the source worksheet.</p>
+        </section>
+        <section class="milestone-page" id="milestones" aria-labelledby="milestones-title">
+          <span class="washi" aria-hidden="true"></span>
+          <h2 id="milestones-title">Milestones</h2>
+          <ul class="milestone-list">
+            <li><strong>Smart India Hackathon finalist</strong><span>2026</span></li>
+            <li><strong>Avishkar Hackathon</strong><span>Institute-level round</span></li>
+            <li><a href="projects/civic-reporting.html"><strong>La Trobe Grand Challenge</strong></a><span>Civic reporting team lead</span></li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+
+    <section class="container notebook-contact" id="contact" aria-labelledby="contact-title">
+      <div>
+        <h2 id="contact-title">Let’s talk.</h2>
+        <p>I’m interested in backend and full-stack software engineering roles and internships.</p>
+      </div>
+      <div class="link-row">
+        <a class="button ink-button" href="mailto:swastika.sinha137@gmail.com">Email me</a>
+        <a class="text-link" href="https://www.linkedin.com/in/swastika-sinha-b39868306/">LinkedIn</a>
+        <a class="text-link" href="https://github.com/Swastika8">GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container site-footer">
+    <p>© 2026 Swastika Sinha</p>
+  </footer>
+</body>
+</html>
