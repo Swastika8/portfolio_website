@@ -6,10 +6,10 @@ import { dirname, extname, join, resolve } from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
-import { compareContracts } from './schema-check.mjs';
-import { errorPageHeaders, renderErrorPage, siteSecurityHeaders } from './error-pages.mjs';
+import { compareContracts } from '../schema-check.mjs';
+import { errorPageHeaders, renderErrorPage, siteSecurityHeaders } from '../error-pages.mjs';
 
-const root = dirname(fileURLToPath(import.meta.url));
+const root = dirname(fileURLToPath(new URL('../package.json', import.meta.url)));
 const port = Number(process.env.PORTFOLIO_PORT || 4173);
 const hosts = new Set(['127.0.0.1:' + port, 'localhost:' + port]);
 const dataDirectory = resolve(process.env.PORTFOLIO_DATA_DIR || join(root, '.portfolio-data'));

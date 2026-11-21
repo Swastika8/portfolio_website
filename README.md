@@ -7,3 +7,9 @@ Open **Blog**, then **Writing studio**. Choose a studio password on your first v
 The server listens on local loopback. Posts and studio credentials are persisted in `.portfolio-data/portfolio.sqlite`. Dashboard notes and sketches are saved in the current browser.
 
 The **Import Check** prototype uses the local JSON API and synthetic contracts. The case study credits the DataHub hackathon project that inspired it.
+
+## Deploy on Vercel
+
+Import this repository using the repository root as the Root Directory. The committed `vercel.json` selects the **Other** preset and runs `npm run build` to generate `dist`. The public pages and error pages are static. The Import Check API uses its own Vercel Function.
+
+The writing studio runs locally with `npm start`. To publish its current public posts on Vercel, finish publishing in the studio, run `npm run export:blog`, review `published-posts.json`, and commit and push that file. The export reads the published versions of posts. A fresh build with no export shows the blog's empty state.
