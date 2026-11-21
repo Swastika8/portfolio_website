@@ -1,24 +1,28 @@
 (() => {
   const desk = document.documentElement;
-  let nextChange;
+  let nextSample;
 
   function setDeskLight() {
-    clearTimeout(nextChange);
+    clearTimeout(nextSample);
     const now = new Date();
-    const hour = now.getHours();
-    const daylight = hour >= 6 && hour < 18;
-    desk.dataset.deskLight = daylight ? 'day' : 'night';
+    const hour = now.getHours() + now.getMinutes() / 60 + now.getSeconds() / 3600;
+    const angle = (hour - 6) * Math.PI / 12;
+    const height = Math.sin(angle);
+    const twilight = Math.min(1, Math.max(0, (height + 0.25) / 0.65));
+    const daylight = twilight * twilight * (3 - 2 * twilight) * (0.55 + 0.45 * Math.max(0, height));
+    desk.style.setProperty('--desk-daylight', daylight.toFixed(4));
+    desk.style.setProperty('--desk-sweep', (-Math.cos(angle)).toFixed(4));
 
-    const boundary = new Date(now);
-    boundary.setHours(daylight ? 18 : 6, 0, 0, 0);
-    if (hour >= 18) boundary.setDate(boundary.getDate() + 1);
-    nextChange = setTimeout(setDeskLight, boundary - now);
+    if (!document.hidden) {
+      nextSample = setTimeout(setDeskLight, 60000 - now.getSeconds() * 1000 - now.getMilliseconds());
+    }
   }
 
   setDeskLight();
   window.addEventListener('pageshow', setDeskLight);
   document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible') setDeskLight();
+    if (document.hidden) clearTimeout(nextSample);
+    else setDeskLight();
   });
 })();
 

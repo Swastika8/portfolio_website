@@ -11,7 +11,7 @@ const root = dirname(fileURLToPath(new URL('../package.json', import.meta.url)))
 const port = Number(process.env.PORTFOLIO_PORT || 4173);
 const hosts = new Set(['127.0.0.1:' + port, 'localhost:' + port]);
 const publicFiles = new Set([
-  '/index.html', '/about.html', '/blog.html', '/post.html',
+  '/index.html', '/about.html', '/blog.html', '/post.html', '/skills.html',
   '/styles.css', '/notebook.css', '/notebook.js', '/blog.js', '/journal-text.js',
   '/about-desk.css', '/about-desk.js',
   '/error.css', '/register-offline.js', '/portfolio-worker.js', '/error-pages.mjs',

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-desk-light="day">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,10 +29,7 @@
 
   <main class="about-workbench" id="main" tabindex="-1">
     <section class="container desk-table" aria-labelledby="about-title">
-      <div class="desk-clock">
-        <span class="desk-day"><span aria-hidden="true">☼</span> Daylight</span>
-        <span class="desk-night"><span aria-hidden="true">☾</span> Lamplight</span>
-      </div>
+      <div class="desk-window-light" aria-hidden="true"></div>
       <img class="desk-lamp" src="assets/notebook/desk-lamp.webp" alt="" width="255" height="360">
       <img class="desk-coffee" src="assets/notebook/coffee-cutout.webp" alt="" width="450" height="450">
       <img class="desk-bracelet" src="assets/notebook/bracelet-cutout.webp" alt="" width="295" height="590" loading="lazy">
@@ -79,7 +76,7 @@
 
         <aside class="desk-sheet desk-toolkit" aria-labelledby="toolkit-title">
           <span class="washi" aria-hidden="true"></span>
-          <h2 id="toolkit-title">My toolkit</h2>
+          <h2 id="toolkit-title"><a class="desk-skills-link" href="skills.html" aria-label="My toolkit, view all skills" title="View all skills">My toolkit</a></h2>
           <dl class="toolkit">
             <div><dt>Backend</dt><dd>FastAPI, Flask, Node.js</dd></div>
             <div><dt>Data</dt><dd>Python, PostgreSQL, SQL</dd></div>

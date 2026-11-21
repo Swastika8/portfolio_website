@@ -1,5 +1,14 @@
+@property --desk-daylight {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 1;
+}
+
+:root { transition: --desk-daylight 5s linear; }
+
 .about-page {
-  --desk-room: #f4ecf1;
+  --desk-warmth: calc(var(--desk-daylight, 1) * 100%);
+  --desk-room: color-mix(in srgb, #f4ecf1 var(--desk-warmth), #c5c7dc);
   --desk-room-ink: #574459;
   --desk-header: #faf4f7;
   --desk-header-ink: #392b41;
@@ -14,26 +23,8 @@
   --desk-tint: #efe0ef;
   --desk-sticky: #f8dfa9;
   --desk-pink: #f4dfe2;
-  --desk-shadow: #59413155;
+  --desk-shadow: color-mix(in srgb, #59413155 var(--desk-warmth), #212a4c66);
   background-color: var(--desk-room);
-}
-
-html[data-desk-light="night"] .about-page {
-  --desk-room: #3f324a;
-  --desk-room-ink: #f6dfed;
-  --desk-header: #4e3d59;
-  --desk-header-ink: #fff0e2;
-  --desk-wood: #76585b;
-  --desk-wood-wash: #ae795a60;
-  --desk-grain: #291c3633;
-  --desk-rim: #524052;
-  --desk-gilt: #d0a558;
-  --desk-edge: #4e3b4e;
-  --desk-paper: #f5e7d1;
-  --desk-tint: #ead9e1;
-  --desk-sticky: #eed5a1;
-  --desk-pink: #eed7dc;
-  --desk-shadow: #2a172b7d;
 }
 
 .about-page .site-header {
@@ -49,8 +40,6 @@ html[data-desk-light="night"] .about-page {
 .about-workbench { padding-block: clamp(1.25rem, 3.7vw, 3.1rem) 1.55rem; }
 
 .desk-table {
-  --light-x: calc(100% - 7.4rem);
-  --light-y: 13.3rem;
   position: relative;
   isolation: isolate;
   overflow: clip;
@@ -66,46 +55,65 @@ html[data-desk-light="night"] .about-page {
   box-shadow: 0 0.46rem 0 var(--desk-edge), 0 1.2rem 2.3rem var(--desk-shadow);
 }
 
-.desk-table::before, .desk-table::after {
+.desk-table::before {
+  content: '';
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  background:
+    radial-gradient(ellipse at 29% 19%, transparent 18%, color-mix(in srgb, #674b3021 var(--desk-warmth), #16284959) 100%),
+    color-mix(in srgb, #f6d9b210 var(--desk-warmth), #304a8180);
+}
+
+.desk-window-light, .desk-table::after {
+  position: absolute;
+  top: clamp(-8rem, -7vw, -4.1rem);
+  left: 4%;
+  width: 74%;
+  height: clamp(19rem, 37vw, 31rem);
+  pointer-events: none;
+  filter: blur(calc(2px + 4px * (1 - var(--desk-daylight, 1))));
+  transform: translate(calc(var(--desk-sweep, 0) * clamp(1rem, 5vw, 4rem)), calc(var(--desk-sweep, 0) * 1.15rem)) rotate(25deg) skewX(-15deg);
+  transition: transform 5s linear;
+}
+
+.desk-window-light {
+  --window-color: color-mix(in srgb, #ffd38a var(--desk-warmth), #a4caff);
+  z-index: 6;
+  mix-blend-mode: screen;
+  opacity: calc(0.23 + 0.21 * var(--desk-daylight, 1));
+}
+
+.desk-window-light::before {
   content: '';
   position: absolute;
   inset: 0;
-  pointer-events: none;
+  background: radial-gradient(ellipse 100% 108% at 23% 16%, var(--window-color) 24%, color-mix(in srgb, var(--window-color), transparent 33%) 62%, transparent 96%);
 }
 
-.desk-table::before {
-  background: linear-gradient(126deg, #fff3b77a 0 17%, #fff3b727 17.6% 20%, #fff2ac63 20.6% 41%, transparent 42%);
-}
+@supports (mask-composite: intersect) {
+  /* The window frame interrupts the same beam of light at every hour. */
+  .desk-window-light::before {
+    mask-image:
+      linear-gradient(90deg, transparent, #000 3%, #000 47%, transparent 48% 51%, #000 52% 97%, transparent),
+      linear-gradient(0deg, transparent, #000 4%, #000 46%, transparent 47% 51%, #000 52% 97%, transparent);
+    mask-composite: intersect;
+  }
 
-.desk-table::after {
-  z-index: 3;
-  background:
-    linear-gradient(127deg, transparent 13%, #7251392a 13.6% 15.8%, transparent 16.4%, transparent 39%, #72513924 39.7% 41.8%, transparent 42.5%),
-    linear-gradient(33deg, transparent 48%, #72513923 48.7% 50.2%, transparent 51%);
+  .desk-table::after {
+    --window-shadow: color-mix(in srgb, #755635 var(--desk-warmth), #26334f);
+    content: '';
+    z-index: 7;
+    opacity: calc(0.09 + 0.055 * var(--desk-daylight, 1));
+    mix-blend-mode: multiply;
+    background:
+      linear-gradient(90deg, transparent 47%, var(--window-shadow) 48.5% 50.5%, transparent 52%),
+      linear-gradient(0deg, transparent 46%, var(--window-shadow) 47.5% 50.5%, transparent 52%);
+    mask-image: radial-gradient(ellipse 70% 72% at 43% 31%, #000 30%, transparent 90%);
+  }
 }
-
-html[data-desk-light="night"] .desk-table::before {
-  background:
-    radial-gradient(ellipse 64% 48% at var(--light-x) var(--light-y), #ffca7bb0, #cb91565f 42%, transparent 77%),
-    linear-gradient(133deg, #3e294e45, transparent 40%, #432f5352);
-}
-
-html[data-desk-light="night"] .desk-table::after {
-  background: radial-gradient(ellipse 85% 67% at var(--light-x) var(--light-y), #ffdb9844, transparent 52%, #3a235029 100%);
-}
-
-.desk-clock {
-  position: absolute;
-  z-index: 2;
-  top: 1.05rem;
-  left: clamp(1.4rem, 4vw, 3rem);
-  color: #4d3540;
-  font: 650 1.35rem/1.1 var(--hand);
-}
-.desk-clock [aria-hidden] { color: #725136; }
-.desk-clock .desk-night, html[data-desk-light="night"] .desk-clock .desk-day { display: none; }
-html[data-desk-light="night"] .desk-clock .desk-night { display: inline; color: #fff0d1; }
-html[data-desk-light="night"] .desk-clock [aria-hidden] { color: #f4c97c; }
 
 .desk-lamp, .desk-coffee, .desk-bracelet {
   position: absolute;
@@ -232,6 +240,8 @@ html[data-desk-light="night"] .desk-clock [aria-hidden] { color: #f4c97c; }
 }
 
 .desk-toolkit h2 { font-size: clamp(2.4rem, 4.5vw, 3.35rem); }
+.desk-skills-link { text-decoration-color: #a67c57; text-decoration-thickness: 1px; text-underline-offset: 0.13em; }
+.desk-skills-link:hover { text-decoration-thickness: 2px; }
 .desk-toolkit .toolkit { margin-top: 0.78rem; }
 .desk-toolkit .toolkit dd { color: var(--desk-ink); overflow-wrap: anywhere; }
 
@@ -248,7 +258,6 @@ html[data-desk-light="night"] .desk-clock [aria-hidden] { color: #f4c97c; }
 }
 
 @media (max-width: 59rem) {
-  .desk-table { --light-x: calc(100% - 5.15rem); --light-y: 9.75rem; }
   .desk-lamp { width: clamp(6.3rem, 13.5vw, 8.35rem); }
   .desk-portrait { margin-left: 0.55rem; }
   .desk-education { margin-top: -1.6rem; }
@@ -256,7 +265,7 @@ html[data-desk-light="night"] .desk-clock [aria-hidden] { color: #f4c97c; }
 }
 
 @media (max-width: 42rem) {
-  .desk-table { --light-x: calc(100% - 2.65rem); --light-y: 5.5rem; }
+  .desk-window-light, .desk-table::after { top: -3.1rem; left: -14%; width: 118%; height: 22rem; }
   .desk-layout { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem 0.85rem; padding-top: 5.7rem; }
   .desk-bio, .desk-experience, .desk-toolkit, .desk-links { grid-column: 1 / -1; grid-row: auto; margin-inline: 0.2rem; }
   .desk-bio { transform: rotate(-1.65deg); }
@@ -267,7 +276,6 @@ html[data-desk-light="night"] .desk-clock [aria-hidden] { color: #f4c97c; }
   .desk-education p { font-size: 0.875rem; overflow-wrap: anywhere; }
   .desk-education h2 { font-size: clamp(1.7rem, 7vw, 2.5rem); }
   .desk-portrait figcaption { font-size: clamp(1.15rem, 5vw, 1.62rem); }
-  .desk-clock { top: 0.98rem; }
   .desk-coffee { top: 2.1rem; left: 29%; width: 3.5rem; }
   .desk-lamp { top: 0.68rem; right: 2.3%; width: 4.8rem; }
   .desk-bracelet { right: 1.6%; }
@@ -282,3 +290,7 @@ html[data-desk-light="night"] .desk-clock [aria-hidden] { color: #f4c97c; }
   .desk-education { padding: 0.68rem; }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  :root { transition: none; }
+  .desk-window-light, .desk-table::after { transform: rotate(25deg) skewX(-15deg); transition: none; }
+}

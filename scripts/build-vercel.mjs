@@ -15,7 +15,7 @@ await rm(output, { recursive: true, force: true });
 await mkdir(output);
 
 const publicFiles = [
-  'index.html', 'about.html', 'blog.html', 'post.html',
+  'index.html', 'about.html', 'blog.html', 'post.html', 'skills.html',
   'styles.css', 'notebook.css', 'notebook.js', 'about-desk.css', 'about-desk.js',
   'blog.js', 'journal-text.js', 'error.css', 'error-pages.mjs', 'portfolio-worker.js', 'register-offline.js',
   'assets', 'projects',
