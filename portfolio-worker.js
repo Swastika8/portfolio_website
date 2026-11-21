@@ -1,10 +1,11 @@
 import { errorPageHeaders, renderErrorPage } from './error-pages.mjs';
 
 const cachePrefix = 'swastika-error-assets-';
-const cacheName = cachePrefix + '2';
+const cacheName = cachePrefix + '3';
 const errorAssets = new Set([
   '/error.css',
   '/assets/notebook/error-bow.webp',
+  '/assets/notebook/desk-cat.webp',
   '/assets/instrument-serif.woff2',
 ]);
 

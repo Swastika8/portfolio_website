@@ -4,13 +4,13 @@ const art = document.querySelector('#desk-art');
 const pad = document.querySelector('#desk-pad');
 const padToggle = document.querySelector('#pad-toggle');
 const coffeeToggle = document.querySelector('#coffee-toggle');
+const coffeeImage = coffeeToggle.querySelector('img');
 const catToggle = document.querySelector('#cat-toggle');
-const catPlay = document.querySelector('#cat-play');
-const catPet = document.querySelector('#cat-pet');
+const catToy = document.querySelector('#cat-toy');
 const catStatus = document.querySelector('#cat-status');
 const cat = document.querySelector('#cursor-cat');
 const catSeat = document.querySelector('#cat-seat');
-const catActionButtons = [catPlay, catPet, catSeat];
+const catActionButtons = [catToy, catSeat];
 const note = document.querySelector('#desk-note');
 const canvas = document.querySelector('#desk-sketch');
 const context = canvas.getContext('2d');
@@ -65,7 +65,6 @@ function readStrokes() {
 let strokes = readStrokes();
 let clearedStrokes = [];
 let inProgress = null;
-let returnFocus = padToggle;
 let following = read(keys.cat) !== 'off';
 let mode = 'type';
 let width = 0;
@@ -73,6 +72,7 @@ let height = 0;
 let frame = 0;
 let lastFrame = 0;
 let catActionTimer = 0;
+let catRestTimer = 0;
 let catActionRequest;
 let nextTrick = 0;
 let targetX = 0;
@@ -138,11 +138,9 @@ function setMode(next) {
   if (drawing) drawSketch();
 }
 
-function showPad(open, trigger = padToggle) {
-  if (open) returnFocus = trigger;
+function showPad(open) {
   art.hidden = open;
   pad.hidden = !open;
-  syncCatButtons();
   padToggle.setAttribute('aria-expanded', String(open));
   if (open) {
     restCat();
@@ -150,7 +148,7 @@ function showPad(open, trigger = padToggle) {
     (mode === 'type' ? note : drawButton).focus({ preventScroll: true });
     pad.scrollIntoView({ block: 'nearest' });
   } else {
-    returnFocus.focus({ preventScroll: true });
+    padToggle.focus({ preventScroll: true });
   }
 }
 
@@ -170,6 +168,7 @@ function finishStroke(event) {
 
 function stopChase() {
   cancelAnimationFrame(frame);
+  clearTimeout(catRestTimer);
   frame = 0;
   lastFrame = 0;
 }
@@ -211,15 +210,9 @@ function loadCatFrames(kind) {
   return atlas.ready;
 }
 
-function syncCatButtons() {
-  catPlay.disabled = !pad.hidden || (motionAllowed.matches && !following);
-  catPet.disabled = !pad.hidden;
-}
-
 function syncCat() {
   catToggle.hidden = !motionAllowed.matches;
   catToggle.setAttribute('aria-pressed', String(following && motionAllowed.matches));
-  syncCatButtons();
   if (following && motionAllowed.matches) loadCatFrames('motion');
   else restCat();
 }
@@ -252,6 +245,7 @@ function moveCat(time) {
   if (distance < 2) {
     cat.dataset.action = 'idle';
     stopChase();
+    catRestTimer = setTimeout(hideMovingCat, 1600);
     return;
   }
 
@@ -271,9 +265,9 @@ function moveCat(time) {
 }
 
 async function performCatAction(event) {
-  if (catActionRequest) return;
+  if (catActionRequest || !pad.hidden) return;
   const trigger = event.currentTarget;
-  const cycling = trigger === catPlay;
+  const cycling = trigger === catToy;
   const request = Symbol();
   const trick = cycling ? catTricks[nextTrick] : catPetting;
   catActionRequest = request;
@@ -306,8 +300,17 @@ drawButton.hidden = !context;
 note.value = read(keys.note) || '';
 updateSketchButtons();
 note.addEventListener('input', () => saveNote(keys.note, note.value));
-padToggle.addEventListener('click', () => showPad(pad.hidden));
-coffeeToggle.addEventListener('click', () => showPad(true, coffeeToggle));
+padToggle.addEventListener('click', () => showPad(true));
+coffeeToggle.addEventListener('click', () => {
+  if (reducedMotion.matches) return;
+  for (const animation of coffeeImage.getAnimations()) animation.cancel();
+  coffeeImage.animate([
+    { rotate: '0deg' },
+    { rotate: '-30deg', offset: 0.3 },
+    { rotate: '30deg', offset: 0.68 },
+    { rotate: '0deg' },
+  ], { duration: 720, easing: 'ease-in-out' });
+});
 document.querySelector('#close-pad').addEventListener('click', () => showPad(false));
 pad.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') showPad(false);
@@ -367,7 +370,12 @@ catToggle.addEventListener('click', () => {
 });
 spread.addEventListener('pointermove', (event) => {
   if (!following || !motionAllowed.matches || event.pointerType === 'touch' || !pad.hidden) return;
-  if (catActionRequest || catSeat.contains(event.target) || catSeat.matches(':focus-visible')) return;
+  if (catActionRequest || catToy.contains(event.target) || catSeat.matches(':focus-visible')) return;
+  if (catSeat.contains(event.target)) {
+    if (!cat.hidden) hideMovingCat();
+    return;
+  }
+  clearTimeout(catRestTimer);
   const bounds = spread.getBoundingClientRect();
   targetX = keepOnPage(event.clientX - bounds.left + 20, bounds.width);
   targetY = keepOnPage(event.clientY - bounds.top + 17, bounds.height);

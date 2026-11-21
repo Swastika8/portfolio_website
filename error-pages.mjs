@@ -57,6 +57,7 @@ export function renderErrorPage(status) {
 <body class="error-page">
   <header class="error-header">
     ${networkError ? '<span class="error-brand">Swastika Sinha<span>.</span></span>' : '<a class="error-brand" href="/">Swastika Sinha<span>.</span></a>'}
+    <img class="error-kitten" src="/assets/notebook/desk-cat.webp" alt="" width="220" height="220" fetchpriority="low">
   </header>
   <main class="error-main" aria-labelledby="error-title">
     <div class="error-paper">

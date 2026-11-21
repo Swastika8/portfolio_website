@@ -536,70 +536,12 @@ main:focus { outline: none; }
   background-position: right 40%;
 }
 
-.ledger-desk { grid-template-columns: minmax(0, 0.81fr) minmax(0, 1.19fr); }
+.ledger-desk { grid-template-columns: minmax(0, 34rem); }
 .ledger-opening { color: #233225; }
 .ledger-opening .label { color: #304631; }
 .ledger-opening h1 { font-size: clamp(4.6rem, 7.6vw, 7.65rem); }
 .ledger-opening .button { background: #354835; }
 .ledger-opening .button:hover { background: #253524; }
-
-.demo-sheet {
-  width: min(100%, 38rem);
-  padding: clamp(1.05rem, 3.1vw, 2.6rem);
-  transform: rotate(0.9deg);
-  background-color: #faf7e9;
-}
-
-.binder {
-  position: absolute;
-  top: -0.46rem;
-  left: 1.8rem;
-  width: 2.25rem;
-  height: 1.02rem;
-  border-radius: 0.19rem 0.19rem 0.08rem 0.08rem;
-  background: linear-gradient(#3e3c35, #1f201d);
-  box-shadow: 0.15rem 0.2rem 0.3rem #26241c60;
-}
-
-.binder::before {
-  content: '';
-  position: absolute;
-  inset: -0.65rem 0.39rem 0.5rem;
-  border: 0.16rem solid #bdbab1;
-  border-bottom: 0;
-  border-radius: 40% 40% 0 0;
-  box-shadow: 0.12rem -0.1rem 0.13rem #34312b49;
-}
-
-.demo-sheet h2 { font-size: clamp(2.65rem, 4.4vw, 4rem); }
-.demo-sheet > p { margin-block: 0.55rem 0.8rem; color: var(--muted); }
-.demo-sheet table {
-  width: 100%;
-  border-collapse: collapse;
-  background: #fffaf0;
-  font-size: 0.875rem;
-  text-align: left;
-  font-variant-numeric: tabular-nums;
-}
-
-.demo-sheet caption {
-  padding: 0.5rem 0.65rem;
-  border: 1px solid #b9bfa6;
-  border-bottom: 0;
-  background: #dee6cd;
-  color: #233225;
-  font-weight: 650;
-  text-align: left;
-}
-
-.demo-sheet th, .demo-sheet td { padding: 0.34rem clamp(0.35rem, 1vw, 0.75rem); border: 1px solid #b9bfa6; }
-.demo-sheet th { background: #f0f2df; color: #28362a; }
-.demo-sheet td { white-space: pre; }
-.demo-sheet [data-duplicate] { background: #f7e4c8; }
-.demo-sheet .button { margin-top: 0.85rem; background: #354835; }
-.demo-sheet .button:hover { background: #253524; }
-.demo-sheet .button[hidden] { display: none; }
-.demo-sheet #sample-status { margin-block: 0.38rem 0; font-size: 0.875rem; }
 
 .field-scene {
   background-color: #d5c198;
@@ -702,7 +644,6 @@ main:focus { outline: none; }
   .case-opening h1 { font-size: clamp(4.4rem, 15vw, 7rem); }
   .orbit-print { transform: rotate(1.4deg); }
   .scene-grid { gap: 1.8rem; }
-  .demo-sheet { transform: none; margin-top: 0.55rem; }
   .field-desk { gap: 1.2rem; padding-block: 2.65rem 2.4rem; }
   .field-opening h1 { font-size: clamp(3.75rem, 13vw, 6.75rem); }
   .report-note { margin-block: 0.45rem 0.55rem; }
@@ -712,7 +653,6 @@ main:focus { outline: none; }
 @media (max-width: 22rem) {
   .hero-letter h1 { font-size: 4.1rem; }
   .hero-letter { padding-inline: 1.15rem; }
-  .demo-sheet th, .demo-sheet td { padding-inline: 0.3rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -31,6 +31,7 @@
 .error-header {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
   min-height: 4.35rem;
   padding-inline: clamp(1.1rem, 5vw, 4.4rem);
   border-bottom: 1px solid #d8c9e2;
@@ -44,6 +45,21 @@
 }
 
 .error-brand span { color: #9b4d78; }
+
+.error-kitten {
+  width: 2.4rem;
+  height: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .error-kitten { animation: error-kitten-hop 1.35s ease-in-out; }
+}
+
+@keyframes error-kitten-hop {
+  0%, 100% { translate: 0 0; }
+  38% { translate: 0 -0.34rem; }
+  69% { translate: 0 -0.12rem; }
+}
 
 .error-main {
   display: grid;
