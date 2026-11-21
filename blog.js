@@ -2,7 +2,6 @@ import { formatDate, portfolioRequest, renderJournalText } from './journal-text.
 
 const status = document.querySelector('#journal-status');
 const listing = document.querySelector('#journal-posts');
-const staticBlog = document.body.hasAttribute('data-static-blog');
 
 function postEntry(post) {
   const item = document.createElement('li');
@@ -23,15 +22,15 @@ function postEntry(post) {
 async function openJournal() {
   try {
     if (listing) {
-      const { posts } = await portfolioRequest(staticBlog ? '/blog-data/posts.json' : '/api/posts');
+      const { posts } = await portfolioRequest('/blog-data/posts.json');
       listing.replaceChildren(...posts.map(postEntry));
       status.textContent = posts.length ? '' : 'No posts yet. New entries will appear here when they’re published.';
       status.hidden = posts.length > 0;
       return;
     }
     const id = new URLSearchParams(location.search).get('id');
-    if (!id || !/^[a-f0-9]{20}$/.test(id)) throw new Error('This post is unavailable.');
-    const { post } = await portfolioRequest(staticBlog ? '/blog-data/' + id + '.json' : '/api/posts/' + id);
+    if (!id || !/^\d{4}-\d{2}-\d{2}-[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id)) throw new Error('This post is unavailable.');
+    const { post } = await portfolioRequest('/blog-data/' + id + '.json');
     document.title = post.title + ' — Swastika Sinha';
     document.querySelector('#post-title').textContent = post.title;
     const date = document.querySelector('#post-date');

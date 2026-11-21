@@ -13,6 +13,7 @@ export async function portfolioRequest(path, payload) {
       : 'Couldn’t reach the portfolio. Try again in a moment.');
   }
   if (!response.headers.get('content-type')?.includes('application/json')) {
+    if (response.status === 404) throw new Error('This page is unavailable.');
     throw new Error(response.status >= 500
       ? 'The portfolio is temporarily unavailable. Try again in a moment.'
       : 'Open this page through the portfolio server.');

@@ -4,8 +4,7 @@
   "type": "module",
   "scripts": {
     "start": "node scripts/local-preview.mjs",
-    "build": "node scripts/build-vercel.mjs",
-    "export:blog": "node scripts/export-blog.mjs"
+    "build": "node scripts/build-vercel.mjs"
   },
   "engines": {
     "node": "24.x"

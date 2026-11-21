@@ -40,7 +40,7 @@ export function renderErrorPage(status) {
   const [title, description] = messages.get(status) ?? messages.get(serverError ? 500 : 400);
   const label = Number.isInteger(status) ? status : 'Error';
   const tryAgain = networkError || serverError || status === 408;
-  const primary = tryAgain ? ['', 'Try again'] : status === 401 ? ['/studio.html', 'Open writing studio'] : ['/', 'Back to the notebook'];
+  const primary = tryAgain ? ['', 'Try again'] : ['/', 'Back to the notebook'];
   const secondary = tryAgain ? ['/', 'Back to the notebook'] : ['/index.html#work', 'See selected work'];
 
   return `<!doctype html>
