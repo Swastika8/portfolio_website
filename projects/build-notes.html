@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Build notes for six software engineering projects Swastika Sinha is developing, with links to the hackathon entries that inspired them.">
+  <meta name="description" content="Build notes for software engineering projects Swastika Sinha is developing, with links to the hackathon entries that inspired them.">
   <meta name="theme-color" content="#f4eef8">
   <title>Build Notes — Swastika Sinha</title>
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png">
@@ -31,7 +31,7 @@
       <div>
         <a class="text-link back-link" href="../index.html#in-development-title">All projects in development</a>
         <h1>Build notes</h1>
-        <p>Six projects I’m building, each with a different take on a hackathon-winning idea. The source repositories are private.</p>
+        <p>Projects I’m building, each with a different take on a hackathon-winning idea. The source repositories are private.</p>
       </div>
     </header>
 
@@ -50,25 +50,11 @@
         <p class="build-inspiration">Inspired by <a class="text-link" href="https://supabase.com/blog/supabase-oss-hackathon-winners#best-overall-project">vdbs</a>, Best Overall Project at the Supabase Open Source Hackathon 2024.</p>
       </article>
 
-      <article class="post-paper" id="offline-dispatch-board" aria-labelledby="offline-dispatch-title">
-        <h2 id="offline-dispatch-title">Offline Dispatch Board</h2>
-        <p>I’m building a Flutter dispatch board that queues assignment edits in SQLite and syncs them when a connection returns. The design uses operation IDs to deduplicate retries and a review queue for conflicting edits.</p>
-        <p>The test scenario uses two devices editing the same assignment offline and reconnecting in either order.</p>
-        <p class="build-inspiration">Inspired by <a class="text-link" href="https://devpost.com/software/materialops">MaterialOps</a>, Grand Prize winner at the Play with Purpose Hackathon.</p>
-      </article>
-
       <article class="post-paper" id="rules-compiler" aria-labelledby="rules-compiler-title">
         <h2 id="rules-compiler-title">Rules Compiler</h2>
         <p>I’m building a C++ compiler for a small language that filters JSON records. The language supports comparisons and Boolean expressions, with bytecode output and line-and-column errors for invalid rules.</p>
         <p>The test cases cover operator precedence, missing operands, and invalid fields.</p>
         <p class="build-inspiration">Inspired by <a class="text-link" href="https://forum.fossunited.org/t/foss-hack-2025-results/5541">goboscript</a>, a prize winner at FOSS Hack 2025.</p>
-      </article>
-
-      <article class="post-paper" id="image-job-queue" aria-labelledby="image-job-title">
-        <h2 id="image-job-title">Image Job Queue</h2>
-        <p>I’m building a thumbnail pipeline with S3, SQS, and Lambda. A status API tracks jobs, and duplicate deliveries for the same upload are designed to reuse one job record.</p>
-        <p>The test cases use duplicate events and a corrupt image to exercise deduplication, retries, and dead-letter handling.</p>
-        <p class="build-inspiration">Inspired by <a class="text-link" href="https://aws.amazon.com/blogs/compute/serverless-icymi-q3-2025/#aws-lambda-hackathon">ForestShield</a>, First Place at the AWS Lambda Hackathon 2025.</p>
       </article>
 
       <article class="post-paper" id="keyboard-outline" aria-labelledby="keyboard-outline-title">
