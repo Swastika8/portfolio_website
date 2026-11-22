@@ -15,7 +15,7 @@ const publicFiles = new Set([
   '/styles.css', '/notebook.css', '/notebook.js', '/blog.js', '/journal-text.js',
   '/about-desk.css', '/about-desk.js',
   '/error.css', '/register-offline.js', '/portfolio-worker.js', '/error-pages.mjs',
-  '/projects/orion.html', '/projects/enola.html',
+  '/projects/orion.html', '/projects/enola.html', '/projects/build-notes.html',
   '/projects/civic-reporting.html', '/projects/import-check.html', '/projects/import-check.js',
 ]);
 const contentTypes = {

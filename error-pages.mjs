@@ -51,6 +51,7 @@ export function renderErrorPage(status) {
   <meta name="theme-color" content="#f4eef8">
   <meta name="robots" content="noindex">
   <title>${title} — Swastika Sinha</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png">
   <link rel="stylesheet" href="/error.css">
   ${networkError ? '' : '<script src="/register-offline.js" defer></script>'}
 </head>

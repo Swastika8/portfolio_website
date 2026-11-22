@@ -641,6 +641,9 @@ body:not(.notebook-home, .journal-index) .site-header .brand::after {
 .work-list small { max-width: 45ch; line-height: 1.48; }
 .work-tools { flex: 0 0 auto; text-align: right; }
 
+.work-in-development { margin-top: 2rem; }
+.work-in-development h3 { margin-bottom: 0.7rem; scroll-margin-block-start: 6rem; }
+
 .work-margin { display: grid; gap: 1.6rem; }
 
 .milestone-page {
@@ -820,6 +823,22 @@ body:not(.notebook-home, .journal-index) .site-header .brand::after {
 }
 .post-paper h1 { font-size: clamp(3.05rem, 7.5vw, 5.55rem); }
 .post-paper time { display: block; margin: 0.65rem 0 1.7rem; }
+.build-briefs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 25rem), 1fr));
+  gap: 1.25rem;
+}
+.build-briefs .post-paper {
+  width: 100%;
+  max-width: none;
+  padding: clamp(1.15rem, 3vw, 1.8rem);
+  scroll-margin-block-start: 6rem;
+}
+.build-briefs .post-paper:target { border-color: #a786ac; }
+.build-briefs h2 { font-size: clamp(2.1rem, 4vw, 3.05rem); }
+.build-briefs p { margin-top: 0.72rem; }
+.build-briefs .build-inspiration { color: var(--notebook-muted); font-size: 0.9rem; }
+
 .post-content { display: grid; gap: 0.82rem; overflow-wrap: anywhere; }
 .post-content h2 { margin-top: 0.55rem; font-size: clamp(2rem, 4.2vw, 3rem); }
 .post-content h3 { margin-top: 0.4rem; font-size: clamp(1.7rem, 3.5vw, 2.55rem); }
