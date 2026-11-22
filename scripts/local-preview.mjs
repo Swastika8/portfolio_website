@@ -16,7 +16,9 @@ const publicFiles = new Set([
   '/about-desk.css', '/about-desk.js',
   '/error.css', '/register-offline.js', '/portfolio-worker.js', '/error-pages.mjs',
   '/projects/orion.html', '/projects/enola.html', '/projects/build-notes.html',
+  '/projects/accessatlas.html',
   '/projects/civic-reporting.html', '/projects/import-check.html', '/projects/import-check.js',
+  '/play/tic-tac-toe.html', '/play/tic-tac-toe.css', '/play/tic-tac-toe.js',
 ]);
 const contentTypes = {
   '.html': 'text/html; charset=utf-8',

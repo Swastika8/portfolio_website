@@ -18,7 +18,7 @@ const publicFiles = [
   'index.html', 'about.html', 'blog.html', 'post.html', 'skills.html',
   'styles.css', 'notebook.css', 'notebook.js', 'about-desk.css', 'about-desk.js',
   'blog.js', 'journal-text.js', 'error.css', 'error-pages.mjs', 'portfolio-worker.js', 'register-offline.js',
-  'assets', 'projects',
+  'assets', 'projects', 'play',
 ];
 await Promise.all(publicFiles.map((file) => cp(join(root, file), join(output, file), { recursive: true })));
 

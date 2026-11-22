@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Play a round of tic-tac-toe with Kitty in Swastika Sinha’s notebook.">
+  <meta name="theme-color" content="#f4eef8">
+  <title>Tic-tac-toe — Swastika Sinha</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../notebook.css">
+  <link rel="stylesheet" href="tic-tac-toe.css">
+  <script src="tic-tac-toe.js" defer></script>
+  <script src="/register-offline.js" defer fetchpriority="low"></script>
+</head>
+<body class="journal-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="Swastika Sinha home">SS<span>.</span></a>
+      <nav class="site-nav notebook-nav" aria-label="Main navigation">
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#milestones">Milestones</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+      </nav>
+      <a class="button button-outline" href="../assets/swastika-sinha-resume.pdf" download>Résumé</a>
+    </div>
+  </header>
+
+  <main class="container journal-main" id="main" tabindex="-1">
+    <div class="game-spread">
+      <header class="game-intro">
+        <div>
+          <a class="text-link back-link" href="../index.html#desk-game">Back to the notebook</a>
+          <h1>Tic-tac-toe</h1>
+          <p>You’re X. Kitty is O. First to three in a row wins.</p>
+        </div>
+        <img class="journal-cat game-kitty" src="../assets/notebook/desk-cat.webp" alt="A watercolor calico kitten wearing a burgundy bow" width="220" height="220">
+      </header>
+
+      <section class="game-sheet" aria-label="Tic-tac-toe game">
+        <span class="washi" aria-hidden="true"></span>
+        <p class="game-status" id="game-status" role="status" aria-atomic="true">Pick a square to start.</p>
+        <div class="game-board" role="group" aria-label="Tic-tac-toe board">
+          <button class="game-cell" type="button" aria-label="Top left" disabled><span aria-hidden="true"></span></button>
+          <button class="game-cell" type="button" aria-label="Top middle" disabled><span aria-hidden="true"></span></button>
+          <button class="game-cell" type="button" aria-label="Top right" disabled><span aria-hidden="true"></span></button>
+          <button class="game-cell" type="button" aria-label="Middle left" disabled><span aria-hidden="true"></span></button>
+          <button class="game-cell" type="button" aria-label="Center" disabled><span aria-hidden="true"></span></button>
+          <button class="game-cell" type="button" aria-label="Middle right" disabled><span aria-hidden="true"></span></button>
+          <button class="game-cell" type="button" aria-label="Bottom left" disabled><span aria-hidden="true"></span></button>
+          <button class="game-cell" type="button" aria-label="Bottom middle" disabled><span aria-hidden="true"></span></button>
+          <button class="game-cell" type="button" aria-label="Bottom right" disabled><span aria-hidden="true"></span></button>
+        </div>
+        <button class="desk-button" id="game-reset" type="button" hidden>New round</button>
+        <noscript><p>Enable JavaScript to play.</p></noscript>
+      </section>
+    </div>
+  </main>
+
+  <footer class="container site-footer">
+    <p>© 2026 Swastika Sinha</p>
+    <a class="text-link" href="../index.html#contact">Contact</a>
+  </footer>
+</body>
+</html>

@@ -224,6 +224,8 @@ body:not(.notebook-home, .journal-index) .site-header .brand::after {
 
 .notebook-right { min-width: 0; }
 .desk-art {
+  --cat-seat-left: 6.5%;
+  --cat-seat-width: clamp(4.55rem, 9.4vw, 7.1rem);
   display: grid;
   align-content: center;
   gap: 1.15rem;
@@ -336,9 +338,9 @@ body:not(.notebook-home, .journal-index) .site-header .brand::after {
   display: block;
   position: absolute;
   z-index: 2;
-  left: 6.5%;
+  left: var(--cat-seat-left);
   bottom: 5%;
-  width: clamp(4.55rem, 9.4vw, 7.1rem);
+  width: var(--cat-seat-width);
   aspect-ratio: 1;
   padding: 0;
   border: 0;
@@ -397,7 +399,7 @@ body:not(.notebook-home, .journal-index) .site-header .brand::after {
   position: absolute;
   z-index: 3;
   bottom: 4%;
-  left: 32%;
+  left: calc(var(--cat-seat-left) + var(--cat-seat-width) + 0.4rem);
   display: grid;
   justify-items: center;
   gap: 0.26rem;
@@ -660,6 +662,28 @@ body:not(.notebook-home, .journal-index) .site-header .brand::after {
 .milestone-list li { display: grid; gap: 0.12rem; padding: 0.53rem 0; border-top: 1px solid #d9bf9b; }
 .milestone-list li span { color: #5e4d57; font-size: 0.875rem; }
 
+.desk-game-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  padding: 1rem clamp(0.9rem, 2.5vw, 1.6rem);
+  border: 1px solid #d6b985;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 17px, var(--graph-line) 17px 18px),
+    repeating-linear-gradient(90deg, transparent 0 17px, var(--graph-line) 17px 18px),
+    #fffbf0;
+  box-shadow: 0.3rem 0.45rem 0.9rem #5836511b;
+  color: var(--lilac-ink);
+  text-decoration: none;
+  scroll-margin-block-start: 6rem;
+}
+.desk-game-link strong { display: block; font: 400 clamp(1.9rem, 3.4vw, 2.6rem)/1 var(--serif); }
+.desk-game-link small { color: var(--notebook-muted); font-size: 0.875rem; }
+.desk-game-link .desk-game-marks { flex: none; color: var(--lilac-accent); font: 650 2.1rem/1 var(--hand); rotate: -8deg; }
+.desk-game-link:is(:hover, :focus-visible) small { text-decoration: underline; text-underline-offset: 0.2em; }
+
 .notebook-contact {
   display: flex;
   align-items: center;
@@ -700,7 +724,7 @@ body:not(.notebook-home, .journal-index) .site-header .brand::after {
 
 @media (40rem < width <= 56rem) {
   .desk-art { padding-bottom: 3.5rem; }
-  .cat-toy { bottom: 0.5%; left: 30%; }
+  .cat-toy { bottom: 0.5%; }
 }
 
 @media (max-width: 42rem) {
@@ -775,7 +799,7 @@ body:not(.notebook-home, .journal-index) .site-header .brand::after {
   overflow-wrap: anywhere;
 }
 .journal-heading p:not(.notebook-label) { color: var(--notebook-muted); }
-.journal-medium { display: inline-block; margin-top: 0.62rem; }
+.journal-medium { margin-top: 0.62rem; }
 .journal-cat { width: clamp(4rem, 13vw, 8.5rem); transform: rotate(7deg); filter: drop-shadow(0.28rem 0.43rem 0.32rem #62455533); }
 
 @media (prefers-reduced-motion: no-preference) {
