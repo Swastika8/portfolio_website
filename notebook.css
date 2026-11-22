@@ -386,11 +386,11 @@ body:not(.notebook-home, .journal-index) .site-header .brand::after {
   transform: rotate(45deg);
 }
 .notebook-shell:not([data-cat-walking]) .desk-art[data-ready] .cat-seat:not([aria-disabled]) .cat-invitation {
-  animation: cat-invite 16s step-end infinite;
+  animation: cat-invite 10s step-end infinite;
 }
 @keyframes cat-invite {
-  0%, 95%, 100% { visibility: hidden; }
-  75% { visibility: visible; }
+  0%, 55%, 100% { visibility: hidden; }
+  30% { visibility: visible; }
 }
 
 .cat-toy {
@@ -666,7 +666,21 @@ body:not(.notebook-home, .journal-index) .site-header .brand::after {
   border-top: 1px solid var(--lilac-line);
 }
 .notebook-contact p { margin-top: 0.45rem; color: var(--notebook-muted); }
-.notebook-home .site-footer { border-top: 1px solid var(--lilac-line); }
+.notebook-footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.9rem;
+  border-top: 1px solid var(--lilac-line);
+  container-type: inline-size;
+}
+.footer-signature {
+  color: var(--lilac-ink);
+  font: 400 clamp(2rem, 18.3cqi, 14rem) / 0.92 var(--serif);
+  letter-spacing: -0.018em;
+  text-align: center;
+  white-space: nowrap;
+}
+.footer-signature span { color: var(--lilac-accent); font-style: italic; }
 
 @media (max-width: 56rem) {
   .intro-sheet h1 { font-size: clamp(4rem, 10vw, 7.1rem); }
